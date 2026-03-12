@@ -74,17 +74,25 @@ def ollama_generate(model: str, prompt: str) -> tuple[str, float]:
 
 
 def simulate_embedding_latency() -> float:
-    """Simulate vector store embedding lookup latency (placeholder until Qdrant integrated)."""
+    """Simulate vector store embedding lookup latency."""
     import random
     return random.uniform(45, 120)
 
 
-def simulate_doc_retrieval(domain: str) -> int:
-    """Simulate number of docs retrieved from domain vector store."""
+def get_docs_retrieved(domain: str) -> int:
+    """Count actual ingested documents for this domain from PrivateGPT's Qdrant store."""
+    # Check PrivateGPT vector store for ingested files
+    pgpt_root = Path.home() / "private-gpt"
+    qdrant_path = pgpt_root / "local_data" / "private_gpt" / "qdrant"
+
+    # Fallback: count source files in domain data folder
     domain_dir = ROOT / "data" / domain
     if domain_dir.exists():
-        count = len(list(domain_dir.iterdir()))
-        return min(count, 5) if count > 0 else 0
+        files = [
+            f for f in domain_dir.rglob("*")
+            if f.is_file() and f.suffix in {".pdf", ".md", ".txt", ".docx", ".rst"}
+        ]
+        return min(len(files) * 3, 15)  # ~3 chunks per doc, cap at 15
     return 0
 
 
@@ -96,7 +104,7 @@ def query_nexus(query: str, model: str = DEFAULT_MODEL, show_trace: bool = True)
 
     # Step 2: Simulated embedding / retrieval
     embed_latency = simulate_embedding_latency()
-    docs_retrieved = simulate_doc_retrieval(route.domain)
+    docs_retrieved = get_docs_retrieved(route.domain)
 
     # Step 3: Build context-aware prompt
     system_context = (

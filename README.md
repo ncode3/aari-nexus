@@ -187,4 +187,6 @@ ln -s ~/Library/CloudStorage/GoogleDrive-*/My\ Drive ~/aari-nexus/data/google_dr
 
 ---
 
+Licensed under Apache 2.0. See [LICENSE](LICENSE).
+
 *AARI — Atlanta AI & Robotics Institute*
