@@ -45,10 +45,12 @@ DOMAIN_KEYWORDS: dict[str, list[str]] = {
         "temporal", "transition model", "representation learning",
     ],
     "linear_algebra": [
-        "matrix", "vector", "eigenvalue", "eigenvector", "determinant",
-        "transpose", "dot product", "cross product", "norm", "span",
-        "basis", "orthogonal", "svd", "singular value", "rank",
+        "matrix", "matrices", "vector", "eigenvalue", "eigenvalues",
+        "eigenvector", "eigenvectors", "determinant", "transpose",
+        "dot product", "cross product", "norm", "span", "basis",
+        "orthogonal", "svd", "singular value", "rank",
         "linear transformation", "projection", "null space",
+        "linear algebra", "pca", "least squares",
     ],
     "research_papers": [
         "paper", "arxiv", "study", "research", "survey", "literature",
