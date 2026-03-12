@@ -1,0 +1,32 @@
+
+# AARI-NEXUS Docker Compose
+# Mac / development profile
+
+version: "3.9"
+
+services:
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: nexus-qdrant
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - ./vector_stores:/qdrant/storage
+    restart: unless-stopped
+
+  nexus-ui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: nexus-ui
+    ports:
+      - "3000:8080"
+    volumes:
+      - open-webui:/app/backend/data
+    environment:
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+volumes:
+  open-webui:

@@ -1,0 +1,64 @@
+
+# AARI-NEXUS Core Configuration
+# Local AI Knowledge & Reasoning Platform
+
+system:
+  name: AARI-NEXUS
+  version: 0.1.0
+  description: "Local AI knowledge and experimentation platform for AI infrastructure education"
+
+server:
+  host: 0.0.0.0
+  port: 8000
+  log_level: info
+
+ollama:
+  api_base: http://localhost:11434
+  timeout: 120
+
+models:
+  default_chat: phi3:mini
+  default_embed: nomic-embed-text
+  fallback_chat: qwen2.5:3b
+  benchmark:
+    - phi3:mini
+    - qwen2.5:3b
+    - gemma2:2b
+
+domains:
+  - quantum
+  - robotics
+  - infrastructure
+  - world_models
+  - linear_algebra
+  - research_papers
+
+rag:
+  similarity_top_k: 5
+  chunk_size: 512
+  chunk_overlap: 64
+
+vector_store:
+  backend: qdrant
+  path: ./vector_stores
+
+data:
+  base_path: ./data
+  google_drive_link: ./data/google_drive
+  watch_enabled: true
+  watch_interval: 10  # seconds
+
+tracing:
+  enabled: true
+  show_domain: true
+  show_model: true
+  show_docs_retrieved: true
+  show_embedding_latency: true
+  show_generation_latency: true
+
+profiles:
+  active: mac
+  available:
+    - mac
+    - jetson
+    - cluster

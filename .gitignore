@@ -1,0 +1,25 @@
+
+# Logs
+logs/
+*.log
+
+# Vector store data (large binary)
+vector_stores/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+.env
+
+# Mac
+.DS_Store
+
+# Data symlinks / actual docs (user keeps locally)
+data/google_drive/
+
+# Secrets
+.env
+*.key
+*.pem

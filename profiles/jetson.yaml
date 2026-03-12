@@ -1,0 +1,33 @@
+
+# AARI-NEXUS Jetson Profile
+# Edge AI node — physical lab deployment
+
+profile: jetson
+description: "NVIDIA Jetson edge node — student-facing AI terminal"
+
+hardware:
+  ram_gb: 16
+  gpu: jetson_orin_nx
+  storage: nvme
+
+models:
+  primary: phi3:mini
+  secondary: qwen2.5:3b
+  tertiary: gemma2:2b
+  embedding: nomic-embed-text
+
+features:
+  voice_interface: true       # whisper.cpp
+  local_vector_store: true
+  edge_inference: true
+  display: hdmi_touchscreen
+
+use_case:
+  - "Student AI terminal in physical lab"
+  - "Edge inference demonstration"
+  - "Robotics sensor data reasoning"
+  - "Portable AI node"
+
+deployment:
+  container: docker
+  compose_file: docker-compose.jetson.yaml

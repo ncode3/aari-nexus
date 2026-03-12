@@ -1,0 +1,40 @@
+
+# AARI-NEXUS Cluster Profile
+# GPU workstation / lab server — production environment
+
+profile: cluster
+description: "AARI lab GPU cluster — production research and inference"
+
+hardware:
+  ram_gb: 64
+  gpu: nvidia_rtx_or_a100
+  storage: raid_nvme
+
+models:
+  primary: llama3:8b-instruct-q4_0
+  secondary: mistral:7b-instruct-v0.3-q4_0
+  large: llama3:70b           # only on cluster
+  embedding: nomic-embed-text
+  code: deepseek-coder
+
+features:
+  cuda_q: true                # quantum circuit simulation
+  multi_gpu: true
+  distributed_vector_store: true
+  web_ui: true
+  api_server: true
+
+use_case:
+  - "Research paper processing at scale"
+  - "CUDA-Q quantum simulation"
+  - "Multi-student concurrent inference"
+  - "Large document corpus ingestion"
+  - "Robotics pipeline integration"
+
+deployment:
+  container: docker
+  compose_file: docker-compose.cluster.yaml
+  ports:
+    api: 8000
+    ui: 3000
+    qdrant: 6333
