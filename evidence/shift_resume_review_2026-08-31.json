@@ -1,0 +1,22 @@
+{
+  "record_type": "historical_workflow_evidence",
+  "workflow": "AARI cohort resume assessment",
+  "source_document_count": 13,
+  "source_page_count": 18,
+  "source_page_count_meaning": "Total pages across submitted PDF resumes; not generated report length.",
+  "human_review_session_seconds": 3131,
+  "human_review_session_display": "52m 11s",
+  "individual_resumes_discussed_live": 6,
+  "observed_session_seconds_per_resume": 521.833333,
+  "linear_13_resume_equivalent_seconds": 6783.833333,
+  "linear_13_resume_equivalent_display": "1h 53m 4s",
+  "historical_ai_runtime_seconds": null,
+  "historical_ai_provider_cost_usd": null,
+  "local_nexus_direct_model_api_cost_usd": 0.0,
+  "caveats": [
+    "The 13-resume manual time is a linear extrapolation from the recorded six-resume session, not a direct benchmark.",
+    "The recorded session also included setup, shared coaching, questions, and portfolio guidance.",
+    "The historical multi-model tool was not instrumented for runtime or provider cost.",
+    "The local Nexus cost figure covers direct token/API charges only and excludes hardware, electricity, maintenance, and human labor."
+  ]
+}

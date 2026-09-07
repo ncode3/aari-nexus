@@ -3,6 +3,11 @@
 logs/
 *.log
 
+# Generated workflow reports and local metrics
+reports/
+metrics/
+*.jsonl
+
 # Vector store data (large binary)
 vector_stores/
 
@@ -18,6 +23,10 @@ __pycache__/
 
 # Data symlinks / actual docs (user keeps locally)
 data/google_drive/
+
+# Sensitive source documents
+resumes/
+student_records/
 
 # Secrets
 .env
