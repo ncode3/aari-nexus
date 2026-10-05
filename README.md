@@ -190,3 +190,18 @@ ln -s ~/Library/CloudStorage/GoogleDrive-*/My\ Drive ~/aari-nexus/data/google_dr
 Licensed under Apache 2.0. See [LICENSE](LICENSE).
 
 *AARI — Atlanta AI & Robotics Institute*
+
+## Cohort Desk operations integration
+
+AARI Cohort Desk is the staff registration, readiness, and follow-up workspace.
+Its Nexus bot integration lives in the separate
+[aari-nexus-azure](https://github.com/ncode3/aari-nexus-azure) application:
+
+- `/cohort desk`: staff app and SharePoint view links.
+- `/cohort summary`: live registration and readiness counts after activation.
+- `/cohort followups`: pending registration follow-up counts after activation.
+
+SharePoint is the source of truth. Registration data is not copied into this
+student research knowledge base. The bot requires an authorized chat, selected
+SharePoint read access, and deployment configuration. See the
+[integration and activation guide](https://github.com/ncode3/aari-nexus-azure/blob/main/docs/cohort-desk.md).
